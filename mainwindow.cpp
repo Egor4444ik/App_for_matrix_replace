@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     QVBoxLayout *layout = new QVBoxLayout(centralWidget);
 
     // Поле ввода n
-    QLabel *nLabel = new QLabel("Введите n (размер матрицы 2n+1):");
+    QLabel *nLabel = new QLabel("Введите n (размер матрицы 2n):");
     nSpinBox = new QSpinBox();
     nSpinBox->setMinimum(0); // Минимальное n
     nSpinBox->setMaximum(20);
@@ -39,7 +39,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 
     // Обновление размера таблицы при изменении n
     connect(nSpinBox, QOverload<int>::of(&QSpinBox::valueChanged), [this](int value) {
-        int size = 2 * value + 1;
+        int size = 2 * value;
         inputTable->setRowCount(size);
         inputTable->setColumnCount(size);
         outputTable->setRowCount(size);
@@ -52,16 +52,16 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 
 void MainWindow::processMatrix() {
     int n = nSpinBox->value();
-    int size = 2 * n + 1;
+    int size = 2 * n;
 
     // Выделение памяти
-    tmatr matrix = new tstr[size];
+    Matrix matrix = new MatrixRow[size];
     for (int i = 0; i < size; i++) {
-        matrix[i] = new telem[size];
+        matrix[i] = new MatrixElem[size];
     }
 
     // Заполнение и обработка
-    inputmatr(matrix, inputTable, size, size);
+    inpuMatrix(matrix, inputTable, size, size);
     displayMatrix(matrix, inputTable, size);
 
     sort_obmenF(matrix, size, size);
@@ -74,7 +74,7 @@ void MainWindow::processMatrix() {
     delete[] matrix;
 }
 
-void MainWindow::displayMatrix(tmatr matrix, QTableWidget *table, int size) {
+void MainWindow::displayMatrix(Matrix matrix, QTableWidget *table, int size) {
     table->setRowCount(size);
     table->setColumnCount(size);
 

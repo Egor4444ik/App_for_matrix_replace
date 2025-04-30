@@ -279,7 +279,6 @@ DIST          = /Qt/6.9.0/macos/mkspecs/features/spec_pre.prf \
 		/Qt/6.9.0/macos/mkspecs/features/qt_config.prf \
 		/Qt/6.9.0/macos/mkspecs/macx-clang/qmake.conf \
 		/Qt/6.9.0/macos/mkspecs/features/spec_post.prf \
-		../../.qmake.stash \
 		/Qt/6.9.0/macos/mkspecs/features/exclusive_builds.prf \
 		/Qt/6.9.0/macos/mkspecs/features/mac/sdk.prf \
 		/Qt/6.9.0/macos/mkspecs/features/toolchain.prf \
@@ -325,7 +324,7 @@ TARGET        = lpgui.app/Contents/MacOS/lpgui
 EXPORT_QMAKE_MAC_SDK = macosx
 EXPORT_QMAKE_MAC_SDK_VERSION = 15.2
 EXPORT_QMAKE_XCODE_DEVELOPER_PATH = /Library/Developer/CommandLineTools
-EXPORT__QMAKE_STASH_ = /Users/egorsmirnov/Documents/lpgui/build/Qt_6_9_0_for_macOS-Profile/.qmake.stash
+EXPORT__QMAKE_STASH_ = 
 EXPORT_VALID_ARCHS = x86_64 arm64
 EXPORT_DEFAULT_ARCHS = arm64
 EXPORT_ARCHS = $(filter $(EXPORT_VALID_ARCHS), $(if $(ARCHS), $(ARCHS), $(if $(EXPORT_DEFAULT_ARCHS), $(EXPORT_DEFAULT_ARCHS), $(EXPORT_VALID_ARCHS))))
@@ -560,7 +559,6 @@ Makefile: ../../lpgui.pro ../../../../Qt/6.9.0/macos/mkspecs/features/spec_pre.p
 		../../../../Qt/6.9.0/macos/mkspecs/features/qt_config.prf \
 		../../../../Qt/6.9.0/macos/mkspecs/macx-clang/qmake.conf \
 		../../../../Qt/6.9.0/macos/mkspecs/features/spec_post.prf \
-		.qmake.stash \
 		../../../../Qt/6.9.0/macos/mkspecs/features/exclusive_builds.prf \
 		../../../../Qt/6.9.0/macos/mkspecs/features/mac/sdk.prf \
 		../../../../Qt/6.9.0/macos/mkspecs/features/toolchain.prf \
@@ -819,7 +817,6 @@ Makefile: ../../lpgui.pro ../../../../Qt/6.9.0/macos/mkspecs/features/spec_pre.p
 ../../../../Qt/6.9.0/macos/mkspecs/features/qt_config.prf:
 ../../../../Qt/6.9.0/macos/mkspecs/macx-clang/qmake.conf:
 ../../../../Qt/6.9.0/macos/mkspecs/features/spec_post.prf:
-.qmake.stash:
 ../../../../Qt/6.9.0/macos/mkspecs/features/exclusive_builds.prf:
 ../../../../Qt/6.9.0/macos/mkspecs/features/mac/sdk.prf:
 ../../../../Qt/6.9.0/macos/mkspecs/features/toolchain.prf:
@@ -898,7 +895,7 @@ clean: compiler_clean
 
 distclean: clean 
 	-$(DEL_FILE) -r lpgui.app
-	-$(DEL_FILE) /Users/egorsmirnov/Documents/lpgui/build/Qt_6_9_0_for_macOS-Profile/lpgui.app.dSYM/Contents/Resources/DWARF/lpgui .qmake.stash /Users/egorsmirnov/Documents/lpgui/build/Qt_6_9_0_for_macOS-Profile/lpgui.app.dSYM/Contents/Info.plist
+	-$(DEL_FILE) /Users/egorsmirnov/Documents/lpgui/build/Qt_6_9_0_for_macOS-Profile/lpgui.app.dSYM/Contents/Resources/DWARF/lpgui /Users/egorsmirnov/Documents/lpgui/build/Qt_6_9_0_for_macOS-Profile/lpgui.app.dSYM/Contents/Info.plist
 	-$(DEL_FILE) Makefile
 
 
@@ -942,6 +939,14 @@ moc_mainwindow.cpp: ../../mainwindow.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QPushButton \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		../../learning_practic.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QItemDelegate \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qitemdelegate.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QWidget \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/QModelIndex \
+		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/qabstractitemmodel.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QLineEdit \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qlineedit.h \
 		../../../../Qt/6.9.0/macos/libexec/moc
 	/Users/egorsmirnov/Qt/6.9.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=16 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/egorsmirnov/Qt/6.9.0/macos/mkspecs/macx-clang -I/Users/egorsmirnov/Documents/lpgui -I/Users/egorsmirnov/Qt/6.9.0/macos/lib/QtWidgets.framework/Headers -I/Users/egorsmirnov/Qt/6.9.0/macos/lib/QtGui.framework/Headers -I/Users/egorsmirnov/Qt/6.9.0/macos/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/16/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/egorsmirnov/Qt/6.9.0/macos/lib ../../mainwindow.h -o moc_mainwindow.cpp
 
@@ -968,7 +973,9 @@ compiler_clean: compiler_lrelease_clean compiler_rcc_clean compiler_moc_header_c
 
 ####### Compile
 
-learning_practic.o: ../../learning_practic.cpp ../../learning_practic.h
+learning_practic.o: ../../learning_practic.cpp ../../learning_practic.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QTableWidget \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qtablewidget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o learning_practic.o ../../learning_practic.cpp
 
 main.o: ../../main.cpp ../../mainwindow.h \
@@ -981,6 +988,14 @@ main.o: ../../main.cpp ../../mainwindow.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QPushButton \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		../../learning_practic.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QItemDelegate \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qitemdelegate.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QWidget \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/QModelIndex \
+		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/qabstractitemmodel.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QLineEdit \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qlineedit.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QApplication \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qapplication.h \
 		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/QLocale \
@@ -999,6 +1014,14 @@ mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QPushButton \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qpushbutton.h \
 		../../learning_practic.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QItemDelegate \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qitemdelegate.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QWidget \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/QModelIndex \
+		../../../../Qt/6.9.0/macos/lib/QtCore.framework/Headers/qabstractitemmodel.h \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QLineEdit \
+		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qlineedit.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QMessageBox \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
 		../../../../Qt/6.9.0/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \

@@ -6,19 +6,19 @@
 using namespace std;
 
 // Собственные типы данных
-typedef int telem;  // Определение типа значений элементов массива
-typedef telem* tstr; // Определение типа "указатель на telem" (строка матрицы)
-typedef tstr* tmatr; // Определение типа "указатель на указатель на telem" (матрица)
+typedef int MatrixElem;  // Определение типа значений элементов массива
+typedef MatrixElem* MatrixRow; // Определение типа "указатель на MatrixElem" (строка матрицы)
+typedef MatrixRow* Matrix; // Определение типа "указатель на указатель на MatrixElem" (матрица)
 
 // Объявление функций
-void inputmatr(tmatr a, int str, int sto);
-void outputmatr(tmatr a, int str, int sto);
-void sort_obmenF(tmatr a, int str, int sto);
-void zeroOutNonSortingRegion(tmatr a, int str, int sto);
+void inpuMatrix(Matrix a, int str, int sto);
+void outpuMatrix(Matrix a, int str, int sto);
+void sort_obmenF(Matrix a, int str, int sto);
+void zeroOutNonSortingRegion(Matrix a, int str, int sto);
 
 
 // Ввод элементов матрицы
-void inputmatr(tmatr a, QTableWidget* table, int str, int sto)
+void inpuMatrix(Matrix a, QTableWidget* table, int str, int sto)
 {
     for (int i = 0; i < str; i++) {
         for (int j = 0; j < sto; j++) {
@@ -33,32 +33,44 @@ void inputmatr(tmatr a, QTableWidget* table, int str, int sto)
 }
 
 // Обнуление элементов внутри треугольника
-void zeroOutNonSortingRegion(tmatr a, int str, int sto) {
+void zeroOutNonSortingRegion(Matrix a, int str, int sto) {
     int center = str / 2;
+    int y;
+    int f;
 
     for (int i = 0; i < str; i++) {
         for (int j = 0; j < sto; j++) {
-            // Determine if the element should be zeroed.
-            if ( i-center<=-abs(center-j) )
+            y = i - center;
+            f = center-j;
+            if ( (f > 0) and (y <= - f - 1) or (f <= 0) and (y <= f - 2) )
                 *(*(a + i) + j) = 0;
         }
     }
 }
 
 // Сортировка элементов массива по убыванию методом обмена с флагом перестановки
-void sort_obmenF(tmatr a, int str, int sto) {
+void sort_obmenF(Matrix a, int str, int sto) {
     int i, j, k, flag;
-    telem z;
+    MatrixElem z;
+    int center = str / 2;
+    int y;
+    int f;
+
     for (j = 0; j < sto; j++) {
         k = str; // Начальное количество не отсортированных элементов
         do {
             flag = 0;
             for (i = 0; i < k - 1; i++) {
-                if (*(*(a + i) + j) < *(*(a + i + 1) + j)) {
-                    z = *(*(a + i) + j);
-                    *(*(a + i) + j) = *(*(a + i + 1) + j);
-                    *(*(a + i + 1) + j) = z;
-                    flag = 1;
+                y = i - center;
+                f = center-j;
+                if ( (f > 0) and (y > - f - 1) or (f <= 0) and (y > f - 2) )
+                {
+                    if (*(*(a + i) + j) < *(*(a + i + 1) + j)) {
+                        z = *(*(a + i) + j);
+                        *(*(a + i) + j) = *(*(a + i + 1) + j);
+                        *(*(a + i + 1) + j) = z;
+                        flag = 1;
+                    }
                 }
             }
             k--;
@@ -68,7 +80,7 @@ void sort_obmenF(tmatr a, int str, int sto) {
 
 
 // Вывод матрицы
-void outputmatr(tmatr a, int str, int sto)
+void outpuMatrix(Matrix a, int str, int sto)
 {
     int i, j;
     cout.width(4);

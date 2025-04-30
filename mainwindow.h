@@ -37,7 +37,7 @@ private:
     QTableWidget *outputTable;
     QPushButton *processButton;
 
-    void displayMatrix(tmatr matrix, QTableWidget *table, int size);
+    void displayMatrix(Matrix matrix, QTableWidget *table, int size);
     void clearTable(QTableWidget *table);
 };
 
